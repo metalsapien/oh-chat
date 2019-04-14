@@ -1,0 +1,157 @@
+/* Stylesheet for the html page: ohchat.html */
+
+/* Styling the body */
+body {
+    background-image: url('/static/bg-ohchat.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Styling the Navigation bar */
+.navbar {
+    background: inherit;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.navbar-brand {
+    letter-spacing: 4px;
+    cursor: context-menu !important;
+}
+
+.nav-name {
+    font-size: 1.1em;
+    letter-spacing: 2px;
+}
+
+.nav-name:hover {
+    color: white !important;
+    cursor: context-menu !important;
+}
+
+.fa-comment {
+    color: white;
+}
+
+/* Styling the main content present below the navigation bar */
+.container {
+    padding-top: 30px;
+}
+
+.card {
+    box-shadow: 8px 8px 40px #003d77;
+}
+
+/* User info section */
+.fa-user-circle-o, .fa-clock-o, .date {
+    color: grey !important;
+}
+
+.card-body {
+    background-color: #f4f4f4;
+}
+
+#pm {
+    border-radius: 2px;
+    background-color: #f4424b;
+    color: white;
+    cursor: pointer;
+}
+
+#pm:hover {
+    background-color: #ff2646;
+}
+
+#recipient, #pmsg {
+    margin-bottom: 10px;
+}
+
+.modal-header {
+    background-color: #f4424b;
+    color: white;
+}
+
+.modal-title {
+    font-weight: 300;
+}
+
+.close {
+    cursor: pointer;
+}
+
+.modal-body {
+    background-color: #f4f4f4;
+}
+
+#send_pm {
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+li {
+    font-size: 1.1em;
+}
+
+.id {
+    font-size: 0.65em;
+    font-weight: bold;
+}
+ 
+/* Styling the Chat box section */
+.time {
+    font-size: 0.8em;
+    color: grey;
+}
+
+.chat_name {
+    font-size: 1.1em;
+}
+
+#chatbox {
+    height: 400px;
+    overflow-y: auto;
+}
+
+#chatbox li {
+    margin-bottom: 10px;
+}
+
+#text_input {
+    word-wrap: wrap;
+}
+
+#send_btn {
+    width: 5em;
+    margin-left: -20px;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+}
+
+.footer-color {
+    background-color: #ddf2ff;
+}
+
+/* Styling the Online users section */
+.online_users {
+    height: 400px;
+    overflow-y: auto;
+}
+
+.fa-circle {
+    font-size: 0.7em;
+    padding-left: 5px;
+}
+
+#total_user li:hover {
+    cursor: pointer;
+    background-color: #e6d6ff;
+    border-radius: 6px;
+}
+
+#total_user {
+    font-weight: 600;
+}

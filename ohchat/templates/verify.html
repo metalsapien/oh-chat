@@ -1,0 +1,53 @@
+<!-- Inheriting the features of base.html file -->
+
+{% extends "base.html" %}
+
+{% block head %}
+
+<!-- Contains the head block of the html with links and title -->
+<title>Verify</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='verify.css') }}">
+
+{% endblock %}
+
+<!-- Contains the main content of the page -->
+{% block content %}
+
+<!-- Writing the heading of the verification page -->
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-sm-6 mx-auto col-12">
+            <h1 class="display-2">Oh Chat&nbsp<i class="fa fa-comment-o"></i></h1>
+            <p class="subtitle">A simple & quick chat app made with logic and <i class="fa fa-heart"></i> for <strong>ZAUBA</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- Creating the input field -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-12 mx-auto">
+            <p class="text-center subtitle">Don't waste time in Signup just..</p>
+            <h4 class="text-center">Get Started!</h4>
+            <!-- Rendering the input form -->
+            <form action="{{ url_for('verify') }}" method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.username(class="form-control", placeholder="Username", id="username") }}
+                <!-- Displaying all the flash messages -->
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                      <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+                <!-- Responsible button to connect to the server -->
+                <button class="btn btn-block" type="submit" id="btn-verify">Connect</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+<!-- Inheriting the features of base.html file -->
+
+{% extends "base.html" %}
+
+{% block head %}
+<!-- Contains the head block of the html with links and title -->
+<title>Oh Chat!</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='ohchat.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Creating the navigation bar -->
+<nav class="navbar navbar-expand-md">
+    <a href="#" class="navbar-brand">Oh Chat! <i class="fa fa-comment-o"></i></a>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="#" class="nav-link" id="disconnect"><i class="fa fa-sign-out"></i> Disconnect</a></li>
+    </ul>
+</nav>
+
+<!-- Main content of the page -->
+<div class="container">
+    <div class="row">
+        <!-- Creating the user info section at the left hand side of the page -->
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li>Joined as : <br><i class="fa fa-user-circle-o"></i> <strong id="pickup">{{ username }}</strong></li>
+                        <hr>
+                        <li id="sid"><span>UID : </span> </li>
+                        <hr>
+                        <li>Time : <br><i class="fa fa-clock-o"></i> <strong>{{ time }}</strong></li>
+                    </ul>
+                </div>
+                <!-- Creating a modal for sending private messages -->
+                <div class="card-footer">
+                    <button class="btn btn-block" type="button" id="pm" data-toggle="modal" data-target="#PModal">Send Private Message</button>
+                    <div class="modal fade" id="PModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Send Private Message</h4>
+                                    <button class="close" data-dismiss="modal" type="button">&times</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <input type="text" id="recipient" class="form-control" placeholder="Recipient" required>
+                                    <textarea class="form-control" id="pmsg" cols="30" rows="4" placeholder="Enter your Message"></textarea>
+                                    <!-- Private message button -->
+                                    <button class="btn btn-block btn-primary" data-dismiss="modal" type="submit" id="send_pm">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Creating the Chat box for displaying all the chat messages -->
+        <div class="col-sm-6">
+            <!-- Displaying all the flash messages -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissable">
+                <button class="close" data-dismiss="alert" type="button">&times</button>
+                Welcome! You are logged in as <strong>{{ username }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <!-- Main Chat box -->
+            <div class="card">
+                <div class="card-body" id="chatbox">
+                    <h6 class="text-center date"><i class="fa fa-calendar"></i> &nbsp {{ date }}</h6>
+                    <hr>
+                </div>
+                <!-- Creating the input message field and button for sending text messages -->
+                <div class="card-footer footer-color">
+                    <div class="row">
+                        <div class="col-9 col-sm-10 ">
+                            <p>
+                            <textarea id="text_input" class="form-control" rows="1" placeholder="Message" required></textarea>
+                            </p>
+                        </div>
+                        <div class="col-3 col-sm-2">
+                            <button id="send_btn" type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section that displays all the users who are online including the current user -->
+        <div class="col-sm-3">
+            <div class="card online_users">
+                <div class="card-header">
+                <h5 class="text-center text-success"><i class="fa fa-user"></i> Online</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled" id="total_user">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Embedding Javascript -->
+<script src="{{ url_for('static', filename='ohchat.js') }}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.15/autosize.min.js'></script>
+
+{% endblock %}
